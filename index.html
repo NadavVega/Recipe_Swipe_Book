@@ -1,0 +1,223 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Recipe Swipe Book</title>
+  <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles/main.css">
+</head>
+<body>
+  <header class="app-header">
+    <div class="app-header__branding" id="go-home-btn" style="cursor: pointer;">
+      <h1 class="app-title">Recipe Swipe Book</h1>
+      <p class="app-subtitle">Discover, swipe, and build your perfect menu</p>
+    </div>
+    <nav class="app-header__nav" aria-label="Main navigation">
+      <button class="btn btn-ghost" type="button" id="personal-details-button">
+        Personal Details
+      </button>
+    </nav>
+  </header>
+
+  <div id="mode-selector" class="mode-selector mode-selector--full">
+    <h2 class="welcome-title">What are you cooking up today? 🧑‍🍳</h2>
+    <div class="mode-cards">
+      <button class="mode-btn" id="btn-mode-quick">
+        <span class="mode-icon">⏱️</span>
+        <div class="mode-text-container">
+          <h3>Quick Meal</h3>
+          <p class="mode-desc">Swipe & find something fast and tasty</p>
+        </div>
+      </button>
+      <button class="mode-btn" id="btn-mode-builder">
+        <span class="mode-icon">🍽️</span>
+        <div class="mode-text-container">
+          <h3>Build a Feast</h3>
+          <p class="mode-desc">Plan a full multi-course menu</p>
+        </div>
+      </button>
+    </div>
+  </div>
+
+  <main class="app-main">
+    <section id="quick-view" hidden>
+      <div class="top-dashboard">
+        <section class="search-panel">
+          <h2 class="section-title">Find a Recipe</h2>
+          <form class="search-form" id="search-form">
+            <div class="search-form__filters">
+              <div class="search-form__filter">
+                <label for="filter-category">Category</label>
+                <select id="filter-category" name="category"><option value="">All Categories</option></select>
+              </div>
+              <div class="search-form__filter">
+                <label for="filter-area">Cuisine / Area</label>
+                <select id="filter-area" name="area"><option value="">World Wide</option></select>
+              </div>
+              <button class="btn btn-primary" type="submit">Match Me!</button>
+            </div>
+          </form>
+        </section>
+
+        <section class="liked-panel">
+          <div class="section-header">
+            <h2 class="section-title">My Favorites ❤️</h2>
+          </div>
+          <div class="liked-list" id="liked-list" aria-live="polite"></div>
+        </section>
+      </div>
+
+      <section class="results-panel">
+        <div class="section-header text-center">
+          <p class="section-subtitle" id="results-summary">Select filters above to start swiping!</p>
+        </div>
+        <div class="swipe-container" id="swipe-container" aria-live="polite">
+           <p class="results-empty">Ready to find your next meal?</p>
+        </div>
+      </section>
+    </section>
+
+    <section id="builder-view" class="builder-layout" hidden>
+      <div class="builder-main">
+        <div class="builder-section" id="section-starters">
+          <div class="builder-section__header">
+            <h3>🥗 Starters <span class="counter" id="count-starters">(0/5)</span></h3>
+            <label class="toggle-switch">
+              <input type="checkbox" id="toggle-starters">
+              <span class="toggle-slider"></span><span class="toggle-label">Include</span>
+            </label>
+          </div>
+          <div class="builder-section__content" id="content-starters" hidden>
+            <div class="builder-filters">
+              <select id="build-area-starters" class="dynamic-area-select"><option value="">Any Area</option></select>
+            </div>
+            <div class="builder-swipe-container" id="swipe-starters"></div>
+          </div>
+        </div>
+
+        <div class="builder-section" id="section-mains">
+          <div class="builder-section__header">
+            <h3>🥩 Main Courses <span class="counter" id="count-mains">(0/5)</span></h3>
+            <label class="toggle-switch">
+              <input type="checkbox" id="toggle-mains">
+              <span class="toggle-slider"></span><span class="toggle-label">Include</span>
+            </label>
+          </div>
+          <div class="builder-section__content" id="content-mains" hidden>
+            <div class="builder-filters">
+              <select id="build-cat-mains">
+                <option value="">Select Main Type...</option>
+                <option value="Beef">Beef</option>
+                <option value="Chicken">Chicken</option>
+                <option value="Lamb">Lamb</option>
+                <option value="Pork">Pork</option>
+                <option value="Seafood">Seafood</option>
+                <option value="Pasta">Pasta</option>
+                <option value="Vegan">Vegan</option>
+                <option value="Vegetarian">Vegetarian</option>
+              </select>
+              <select id="build-area-mains" class="dynamic-area-select" disabled><option value="">Any Area</option></select>
+            </div>
+            <div class="builder-swipe-container" id="swipe-mains"><p class="results-empty">Select a type first.</p></div>
+          </div>
+        </div>
+
+        <div class="builder-section" id="section-misc">
+          <div class="builder-section__header">
+            <h3>🍟 Sides & Misc <span class="counter" id="count-misc">(0/5)</span></h3>
+            <label class="toggle-switch">
+              <input type="checkbox" id="toggle-misc">
+              <span class="toggle-slider"></span><span class="toggle-label">Include</span>
+            </label>
+          </div>
+          <div class="builder-section__content" id="content-misc" hidden>
+            <div class="builder-filters">
+              <select id="build-cat-misc">
+                <option value="">Select Type...</option>
+                <option value="Side">Side Dish</option>
+                <option value="Miscellaneous">Miscellaneous</option>
+              </select>
+              <select id="build-area-misc" class="dynamic-area-select" disabled><option value="">Any Area</option></select>
+            </div>
+            <div class="builder-swipe-container" id="swipe-misc"><p class="results-empty">Select a type first.</p></div>
+          </div>
+        </div>
+
+        <div class="builder-section" id="section-desserts">
+          <div class="builder-section__header">
+            <h3>🍰 Desserts <span class="counter" id="count-desserts">(0/5)</span></h3>
+            <label class="toggle-switch">
+              <input type="checkbox" id="toggle-desserts">
+              <span class="toggle-slider"></span><span class="toggle-label">Include</span>
+            </label>
+          </div>
+          <div class="builder-section__content" id="content-desserts" hidden>
+            <div class="builder-filters">
+              <select id="build-area-desserts" class="dynamic-area-select"><option value="">Any Area</option></select>
+            </div>
+            <div class="builder-swipe-container" id="swipe-desserts"></div>
+          </div>
+        </div>
+      </div>
+
+      <aside class="builder-sidebar">
+        <div class="sidebar-sticky">
+          <h2 class="section-title">Current Feast</h2>
+          <div class="menu-summary" id="menu-summary">
+             <p class="liked-empty text-center">Your menu is empty.</p>
+          </div>
+          <div class="menu-actions">
+            <button class="btn btn-primary" id="btn-save-menu" style="width: 100%; margin-bottom: 0.5rem;">💾 Save Menu</button>
+            <button class="btn btn-accent" id="btn-share-menu" style="width: 100%;">📤 Share Menu</button>
+          </div>
+          
+          <hr style="border-color: var(--color-border); border-style: dashed; margin: 1.5rem 0;">
+          
+          <h2 class="section-title">Saved Feasts 🍽️</h2>
+          <div class="saved-menus-list" id="saved-menus-list">
+             <p class="liked-empty text-center">No saved feasts yet.</p>
+          </div>
+        </div>
+      </aside>
+    </section>
+  </main>
+
+  <div id="app-loader" class="app-loader">
+    <div class="spinner"></div>
+    <p>Preparing the kitchen...</p>
+  </div>
+
+  <div class="modal" id="feast-details-modal" role="dialog" aria-modal="true" hidden>
+    <div class="modal__backdrop" id="feast-modal-backdrop"></div>
+    <div class="modal__content">
+      <header class="modal__header">
+        <h2 class="modal__title" id="modal-feast-title">Feast Details</h2>
+        <button type="button" class="modal__close-button" id="btn-close-feast-modal">×</button>
+      </header>
+      <div class="modal__body" id="feast-details-content">
+        </div>
+      <footer class="modal__footer">
+        <button class="btn btn-accent" id="btn-modal-share-feast" style="width: 100%;">📤 Share This Feast</button>
+      </footer>
+    </div>
+  </div>
+
+  <div class="modal" id="recipe-details-modal" role="dialog" aria-modal="true" hidden>
+    <div class="modal__backdrop" id="recipe-modal-backdrop"></div>
+    <div class="modal__content modal__content--large">
+      <header class="modal__header">
+        <h2 class="modal__title" id="modal-recipe-title">Recipe Details</h2>
+        <button type="button" class="modal__close-button" id="btn-close-recipe-modal">×</button>
+      </header>
+      <div class="modal__body" id="recipe-details-content"></div>
+      <footer class="modal__footer details-actions" id="recipe-modal-footer"></footer>
+    </div>
+  </div>
+
+  <script src="js/api.js"></script>
+  <script src="js/storage.js"></script>
+  <script src="js/ui.js"></script>
+  <script src="js/app.js"></script>
+</body>
+</html>
