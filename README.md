@@ -20,3 +20,9 @@ Since this project is built purely with Vanilla JavaScript, HTML, and CSS, there
 1. Clone this repository to your local machine:
    ```bash
    git clone [https://github.com/NadavVega/Recipe_Swipe_Book.git](https://github.com/NadavVega/Recipe_Swipe_Book.git)
+
+### Screenshot of the app:
+<img width="1834" height="932" alt="Screenshot from 2026-02-28 18-33-19" src="https://github.com/user-attachments/assets/d37745f6-73d2-45b3-af6d-<img width="682" height="826" alt="Screenshot from 2026-02-28 18-40-49" src="https://github.com/user-attachments/assets/2aa6b6c0-8152-4604-bfda-7ab5aa8e9271" />
+61cffa5a9f9b" />
+<img width="682" height="826" alt="Screenshot from 2026-02-28 18-37-20" src="https://github.com/user-attachments/assets/6aa829d5-c7ef-40bd-9098-8dfbfe274fa9" />
+<img width="1221" height="834" alt="Screenshot from 2026-02-28 18-41-28" src="https://github.com/user-attachments/assets/cb491a1d-26db-493f-a078-52a21d5320c4" />
