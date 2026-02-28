@@ -19,4 +19,4 @@ Since this project is built purely with Vanilla JavaScript, HTML, and CSS, there
 ### Option 1: The Quickest Way
 1. Clone this repository to your local machine:
    ```bash
-   git clone [https://github.com/YOUR-USERNAME/recipe-swipe-book.git](https://github.com/YOUR-USERNAME/recipe-swipe-book.git)
+   git clone [https://github.com/NadavVega/recipe-swipe-book.git](https://github.com/YOUR-USERNAME/recipe-swipe-book.git)
